@@ -11,8 +11,5 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    private function test()
-    {
-        return view("welcome")
-    }
+    
 }
