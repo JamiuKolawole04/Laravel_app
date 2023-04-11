@@ -1,5 +1,6 @@
 <?php
 
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    Debugbar::addMessage("INFO!");
+
+    // try {
+
+    //     throw new Exception("Try message");
+    // } catch(Exception $e) {
+    //     Debugbar::addException($e);
+    // }
+
+    $name = "Code with Bhary";
+    
+    return view('welcome', [
+        "name" => $name,
+    ]);
 });
