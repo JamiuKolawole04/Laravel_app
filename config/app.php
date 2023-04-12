@@ -159,7 +159,7 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
-        Barryvdh\Debugbar\ServiceProvider::class, // logging message to the console
+        Barryvdh\Debugbar\ServiceProvider::class, // logging message to the console and registering debug bar to laravel config
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostsController;
 use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Support\Facades\Route;
 
@@ -30,3 +31,6 @@ Route::get('/', function () {
         "name" => $name,
     ]);
 });
+
+// Route::get("/blog", [PostsController::class, "index"]);
+Route::resource("blog", PostsController::class);
