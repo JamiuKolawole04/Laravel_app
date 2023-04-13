@@ -43,8 +43,20 @@ Route::get('/', function () {
     ]);
 });
 
-// Route::get("/blog", [PostsController::class, "index"]);
-Route::resource("blog", PostsController::class);
+// GET Requests
+// Route::resource("blog", PostsController::class);
+Route::get("/blog", [PostsController::class, "index"]);
+Route::get("/blog/1", [PostsController::class, "show"]);
 
+// POST Requests
+Route::post("/blog/create", [PostsController::class, "create"]);
+Route::post("/blog/1", [PostsController::class, "store"]);
+
+// PUT or PATCHR equests
+Route::put("/blog/1", [PostsController::class, "edit"]);
+Route::patch("?blog/1", [PostsController::class, "update"]);
+
+// DELETE Requests
+Route::delete("/blog/1", [PostsController::class, "destroy"]);
 // caaling theinvol with a route
 Route::get("/involke", HomeController::class);
