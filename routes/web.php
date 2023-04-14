@@ -44,7 +44,7 @@ Route::get('/', function () {
 });
 
 // GET Requests
-// Route::resource("blog", PostsController::class);
+Route::resource("blog", PostsController::class);
 Route::get("/blog", [PostsController::class, "index"]);
 Route::get("/blog/1", [PostsController::class, "show"]);
 
@@ -54,9 +54,22 @@ Route::post("/blog/1", [PostsController::class, "store"]);
 
 // PUT or PATCHR equests
 Route::put("/blog/1", [PostsController::class, "edit"]);
-Route::patch("?blog/1", [PostsController::class, "update"]);
+Route::patch("/blog/1", [PostsController::class, "update"]);
 
 // DELETE Requests
 Route::delete("/blog/1", [PostsController::class, "destroy"]);
+
+
+// MULTIPLE VERBS
+// Route::match(["GET", "POST"], "/blog", [PostsController::class, "index"]);
+
+// ANY VERBS
+// Route::any("/blog", [PostsController::class, "index"]);
+
+// Return view without needing controllers
+Route::view( "/view ", "blog.index", ["name" => "code with dhary"]);
+
+
+
 // caaling theinvol with a route
 Route::get("/involke", HomeController::class);
