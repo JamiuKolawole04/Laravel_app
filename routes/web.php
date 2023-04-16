@@ -49,8 +49,29 @@ Route::get("/blog", [PostsController::class, "index"]);
 Route::get("/article/{id?}", [PostsController::class, "show"]);
 // adding regular expression only to route id and makng sure it's an integer
 Route::get("/blog/{id}", [PostsController::class, "show"])->where("id", "[0-9]+");
+
+// checking number with whereNumber
+Route::get("/blog/number/{id}", [PostsController::class, "show"])->whereNumber("id");
 // adding regular expression only to route id and makng sure it's a string or they are strings
 Route::get("/blogTwo/{name}", [PostsController::class, "show"])->where("name", "[A-Za-z]+");
+
+// checking alphabet with where alpha
+Route::get("/blogTwo/{name}", [PostsController::class, "show"])->whereAlpha("name");
+
+// check whether id is number and name is alphabet with where statement
+Route::get("/blogThree/{id}/{name}", [PostsController::class, "show"])
+    ->where([
+        "id" => "[0-9]+",
+        "name" => "[A-Za-z]+"
+    ]);
+
+// check whether id is number and name is alphabet with where statement
+
+Route::get("/blogThree/{id}/{name}", [PostsController::class, "show"])
+   ->whereNumber("id")
+   ->whereAlpha("name");
+
+    
 
 // POST Requests
 Route::post("/blog/create", [PostsController::class, "create"]);
