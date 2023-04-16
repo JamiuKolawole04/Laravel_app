@@ -40,24 +40,28 @@ Route::get('/', function () {
     
     return view('welcome', [
         "name" => $name,
-    ]);
+    ]); 
 });
 
 // GET Requests
-Route::resource("blog", PostsController::class);
+// Route::resource("blog", PostsController::class);
 Route::get("/blog", [PostsController::class, "index"]);
-Route::get("/blog/1", [PostsController::class, "show"]);
+Route::get("/article/{id?}", [PostsController::class, "show"]);
+// adding regular expression only to route id and makng sure it's an integer
+Route::get("/blog/{id}", [PostsController::class, "show"])->where("id", "[0-9]+");
+// adding regular expression only to route id and makng sure it's a string or they are strings
+Route::get("/blogTwo/{name}", [PostsController::class, "show"])->where("name", "[A-Za-z]+");
 
 // POST Requests
 Route::post("/blog/create", [PostsController::class, "create"]);
-Route::post("/blog/1", [PostsController::class, "store"]);
+Route::post("/blog/{id}", [PostsController::class, "store"]);
 
 // PUT or PATCHR equests
-Route::put("/blog/1", [PostsController::class, "edit"]);
-Route::patch("/blog/1", [PostsController::class, "update"]);
+Route::put("/blog/{id}", [PostsController::class, "edit"]);
+Route::patch("/blog/{id}", [PostsController::class, "update"]);
 
 // DELETE Requests
-Route::delete("/blog/1", [PostsController::class, "destroy"]);
+Route::delete("/blog/{id}", [PostsController::class, "destroy"]);
 
 
 // MULTIPLE VERBS
