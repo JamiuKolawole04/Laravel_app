@@ -46,9 +46,10 @@ Route::get('/', function () {
 // GET Requests
 // Route::resource("blog", PostsController::class);
 Route::get("/blog", [PostsController::class, "index"]);
+Route::get("/blog2", [PostsController::class, "indexTwo"])->name("blog2");
 Route::get("/article/{id?}", [PostsController::class, "show"]);
 // adding regular expression only to route id and makng sure it's an integer
-Route::get("/blog/{id}", [PostsController::class, "show"])->where("id", "[0-9]+");
+Route::get("/blog/{id}", [PostsController::class, "show"])->where("id", "[0-9]+")->name("blogWithId");
 
 // checking number with whereNumber
 Route::get("/blog/number/{id}", [PostsController::class, "show"])->whereNumber("id");

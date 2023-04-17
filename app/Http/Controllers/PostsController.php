@@ -19,7 +19,17 @@ class PostsController extends Controller
     public function index()
     {
         //
-        return view("blog.index");
+        return view("blog.index", [
+            "name"  => "route variable"
+        ]);
+    }
+
+    public function indexTwo()
+    {
+        //
+        return view("blog.blog2", [
+            "name"  => "route variable blog 2"
+        ]);
     }
 
     /**
