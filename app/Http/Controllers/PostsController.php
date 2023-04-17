@@ -32,6 +32,12 @@ class PostsController extends Controller
         ]);
     }
 
+    public function user()
+    {
+        //
+        return "user route";
+    }
+
     /**
      * Show the form for creating a new resource.
      *

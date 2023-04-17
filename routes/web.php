@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FallbackController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
 use Barryvdh\Debugbar\Facades\Debugbar;
@@ -85,6 +86,12 @@ Route::patch("/blog/{id}", [PostsController::class, "update"]);
 // DELETE Requests
 Route::delete("/blog/{id}", [PostsController::class, "destroy"]);
 
+// prefixed route
+Route::prefix("/second")->group(function () {
+     Route::get("/", [PostsController::class, "indexTwo"]);
+    Route::get("/user", [PostsController::class, "user"]);
+});
+
 
 // MULTIPLE VERBS
 // Route::match(["GET", "POST"], "/blog", [PostsController::class, "index"]);
@@ -99,3 +106,6 @@ Route::view( "/view ", "blog.index", ["name" => "code with dhary"]);
 
 // caaling theinvol with a route
 Route::get("/involke", HomeController::class);
+
+// fallback route
+Route::fallback(FallbackController::class);
