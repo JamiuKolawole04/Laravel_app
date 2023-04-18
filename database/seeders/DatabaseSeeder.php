@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Post;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,6 +22,11 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        $this->call(PostsTableSeeder::class);
+
+        // Calling PostsTableSeeder
+        // $this->call(PostsTableSeeder::class);
+
+        // creating post factory for seeding
+        Post::factory(100)->create();
     }
 }
