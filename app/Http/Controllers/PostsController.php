@@ -21,10 +21,12 @@ class PostsController extends Controller
     {
         //
         // $post = DB::statement("SELECT * FROM posts");
-        $posts = DB::select("SELECT * FROM posts");
+        // $posts = DB::select("SELECT * FROM posts");
+        // $posts = DB::select("SELECT * FROM posts WHERE id = 1");
+        $posts = DB::select("SELECT * FROM posts WHERE id = :id", [ "id" => 10]);
 
-        var_dump($posts);
-        // dd($posts);
+        // var_dump($posts);
+        dd($posts);
 
 
         
