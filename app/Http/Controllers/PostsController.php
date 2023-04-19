@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
 {
@@ -19,6 +20,14 @@ class PostsController extends Controller
     public function index()
     {
         //
+        // $post = DB::statement("SELECT * FROM posts");
+        $posts = DB::select("SELECT * FROM posts");
+
+        var_dump($posts);
+        // dd($posts);
+
+
+        
         return view("blog.index", [
             "name"  => "route variable"
         ]);
