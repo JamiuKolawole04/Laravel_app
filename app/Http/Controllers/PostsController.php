@@ -22,11 +22,14 @@ class PostsController extends Controller
         //
         // $post = DB::statement("SELECT * FROM posts");
         // $posts = DB::select("SELECT * FROM posts");
-        // $posts = DB::select("SELECT * FROM posts WHERE id = 1");
-        $posts = DB::select("SELECT * FROM posts WHERE id = :id", [ "id" => 10]);
+        $posts_insert = DB::insert("INSERT INTO posts (title, excerpt, body, image_path, is_published, min_to_read ) VALUES (?, ?, ?, ?, ?, ?)", ["Test", "Test", "test", "Test", true, 1]);
+        $posts_select_with_title = DB::select("SELECT * FROM posts WHERE title = 'Post Two'");
+        // $posts = DB::select("SELECT * FROM posts WHERE id = :id", [ "id" => 10]);
+        $posts_select_with_id = DB::select("SELECT * FROM posts WHERE id = 1");
+        $posts_select_all = DB::select("SELECT * FROM posts");
 
         // var_dump($posts);
-        dd($posts);
+        dd($posts_select_with_id);
 
 
         
