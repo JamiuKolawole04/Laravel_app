@@ -32,7 +32,18 @@ class PostsController extends Controller
         // $posts_update = DB::update("UPDATE posts set body = ? WHERE id = ?", ["Body 2", 3]);
         // $posts_delete = DB::delete("DELETE FROM  posts WHERE id = ? ", [102]);
 
-        $posts = DB::table("posts")->get();
+        // referencing table name directly
+
+        // get all posts from table
+        // $posts = DB::table("posts")->get();
+        
+        // get posts with clause 
+        // $posts = DB::table("posts")->where("id", "=", 10) ->get();
+        // $posts = DB::table("posts")->where("id", ">", 10)->get();
+        // $posts = DB::table("posts")->where("id",  1)->get();
+        // $posts = DB::table("posts")->where("is_published",  false)->get();
+        // $posts = DB::table("posts")->where("is_published",  true)->where("id", "=", "100")->get();
+        $posts = DB::table("posts")->whereBetween("min_to_read", [2, 6])->get();
 
         // var_dump($posts);
         // dd($posts_insert);
