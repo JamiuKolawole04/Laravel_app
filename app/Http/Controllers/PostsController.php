@@ -43,7 +43,32 @@ class PostsController extends Controller
         // $posts = DB::table("posts")->where("id",  1)->get();
         // $posts = DB::table("posts")->where("is_published",  false)->get();
         // $posts = DB::table("posts")->where("is_published",  true)->where("id", "=", "100")->get();
-        $posts = DB::table("posts")->whereBetween("min_to_read", [2, 6])->get();
+        // $posts = DB::table("posts")->whereBetween("min_to_read", [2, 6])->get();
+        // $posts = DB::table("posts")->whereNotBetween("min_to_read", [2, 6])->get();
+
+        // between 1, 2 and 9
+        // $posts = DB::table("posts")->whereIn("min_to_read", [1, 2, 9])->get();
+
+        //  querying null values
+        // $posts = DB::table("posts")->whereNull("excerpt")->get();
+
+        // querying non null values
+        // $posts = DB::table("posts")->whereNotNull("excerpt")->get();
+
+        // querying dataase and ordering them
+        // $posts = DB::table("posts")->orderBy("id", "desc")->get();
+
+        // skipping data 
+        // $posts = DB::table("posts")->skip(20)->take(10)->get();
+
+        //  inrandom orders
+        $posts = DB::table("posts")->inRandomOrder()->get();
+
+
+
+
+
+
 
         // var_dump($posts);
         // dd($posts_insert);
