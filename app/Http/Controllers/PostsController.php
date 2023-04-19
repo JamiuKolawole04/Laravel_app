@@ -22,14 +22,20 @@ class PostsController extends Controller
         //
         // $post = DB::statement("SELECT * FROM posts");
         // $posts = DB::select("SELECT * FROM posts");
-        $posts_insert = DB::insert("INSERT INTO posts (title, excerpt, body, image_path, is_published, min_to_read ) VALUES (?, ?, ?, ?, ?, ?)", ["Test", "Test", "test", "Test", true, 1]);
+        // $posts_insert = DB::insert("INSERT INTO posts (title, excerpt, body, image_path, is_published, min_to_read ) VALUES (?, ?, ?, ?, ?, ?)", ["Test", "Test", "test", "Test", true, 1]);
         $posts_select_with_title = DB::select("SELECT * FROM posts WHERE title = 'Post Two'");
         // $posts = DB::select("SELECT * FROM posts WHERE id = :id", [ "id" => 10]);
         $posts_select_with_id = DB::select("SELECT * FROM posts WHERE id = 1");
         $posts_select_all = DB::select("SELECT * FROM posts");
+        $posts_update = DB::update("UPDATE posts set body = ? WHERE id = ?", ["Body 2", 3]);
+        $posts_delete = DB::delete("DELETE FROM  posts WHERE id = ? ", [102]);
 
         // var_dump($posts);
-        dd($posts_select_with_id);
+        // dd($posts_insert);
+        // dd($posts_select_with_title);
+        // dd($posts_select_with_id);
+        // dd($posts_select_all);
+        dd($posts_delete);
 
 
         
