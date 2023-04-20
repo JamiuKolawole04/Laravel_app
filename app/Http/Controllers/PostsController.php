@@ -86,6 +86,11 @@ class PostsController extends Controller
         ]);
     }
 
+    public function default() 
+    {
+        return view("index");
+    }
+
     public function indexTwo()
     {
         //

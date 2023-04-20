@@ -47,6 +47,7 @@ Route::get('/', function () {
 // GET Requests
 // Route::resource("blog", PostsController::class);
 Route::get("/blog", [PostsController::class, "index"]);
+Route::get("/index", [PostsController::class, "default"]);
 Route::get("/blog2", [PostsController::class, "indexTwo"])->name("blog2");
 Route::get("/article/{id?}", [PostsController::class, "show"]);
 // adding regular expression only to route id and makng sure it's an integer
