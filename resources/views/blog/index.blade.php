@@ -22,7 +22,9 @@
     <h1>Blog</h1>
     {{-- {{ $posts->title }} --}}
     {{-- {{ dump($posts) }} --}}
-    @if (count($posts) < 100 )
+
+
+    {{-- @if (count($posts) < 100 )
 
      <h1>
         {{ dd($posts) }}
@@ -33,7 +35,27 @@
         
     @else
      <h1>No posts</h1>
-    @endif
+    @endif --}}
+
+    {{-- unless is the negation of ig
+        unless = !@if()
+        
+        --}}
+    {{-- @unless ($posts)
+        <h1>Posts have been added</h1>
+    @endunless --}}
+    
+
+    {{-- array loops --}}
+    @forelse ($posts as $post)
+        {{-- {{ $post->title }} --}}
+        {{ $loop->index }}
+    
+        {{-- fullack if there is nothing in array $posts  --}}
+    @empty
+      No post has been set
+        
+    @endforelse
     
 </body>
 </html>
