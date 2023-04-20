@@ -96,7 +96,11 @@ class PostsController extends Controller
         // return view with posts variable
         //   return view("blog.index")->with("posts", $posts);
 
-          return view("blog.index", compact("posts"));
+        // passing arrays to view
+        //   return view("blog.index", compact("posts"));
+          return view("blog.index", [
+            "posts" => $posts
+          ]);
 
     }
 
