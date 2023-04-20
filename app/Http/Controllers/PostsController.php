@@ -62,7 +62,14 @@ class PostsController extends Controller
         // $posts = DB::table("posts")->skip(20)->take(10)->get();
 
         //  inrandom orders
-        $posts = DB::table("posts")->inRandomOrder()->get();
+        // $posts = DB::table("posts")->inRandomOrder()->get();
+
+        // get average number
+        // $posts = DB::table("posts")->avg("min_to_read");
+
+        $posts = DB::table("posts")->find(5);
+        $posts = DB::table("posts")->get();
+
 
 
 
@@ -77,13 +84,20 @@ class PostsController extends Controller
         // dd($posts_select_all);
         // dd($posts_delete);
 
-        dd($posts);
+        // dd($posts);
 
 
         
-        return view("blog.index", [
-            "name"  => "route variable"
-        ]);
+        // view with variable called "name" ..Variable can be changed
+        // return view("blog.index", [
+        //     "name"  => "route variable"
+        // ]);
+
+        // return view with posts variable
+        //   return view("blog.index")->with("posts", $posts);
+
+          return view("blog.index", compact("posts"));
+
     }
 
     public function default() 
