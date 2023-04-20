@@ -21,7 +21,19 @@
 
     <h1>Blog</h1>
     {{-- {{ $posts->title }} --}}
-    {{ dump($posts) }}
+    {{-- {{ dump($posts) }} --}}
+    @if (count($posts) < 100 )
+
+     <h1>
+        {{ dd($posts) }}
+     </h1>
+
+    @elseif (count($posts) === 102)
+     <h1>You have exactly 102 posts</h1>
+        
+    @else
+     <h1>No posts</h1>
+    @endif
     
 </body>
 </html>
