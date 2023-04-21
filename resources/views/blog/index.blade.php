@@ -49,7 +49,13 @@
     {{-- array loops --}}
     @forelse ($posts as $post)
         {{-- {{ $post->title }} --}}
-        {{ $loop->index }}
+        {{-- {{ $loop->index }} --}}
+        {{-- {{ $loop->iteration }} --}}
+        {{-- {{ $loop->count }} --}}
+        {{-- {{ $loop->first }} --}}
+        {{-- {{ $loop->last }} --}}
+        {{-- {{ $loop->depth }} --}}
+        {{-- {{ $loop->parent }} --}}
     
         {{-- fullack if there is nothing in array $posts  --}}
     @empty
