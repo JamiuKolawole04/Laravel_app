@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text("body");
             $table->integer("min_to_read")->default(1);
             $table->string("image_path");
+            // default for all boolean is true
             $table->boolean("is_published");
             $table->timestamps();
         });

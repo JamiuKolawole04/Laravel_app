@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -106,7 +107,24 @@ class PostsController extends Controller
 
     public function default() 
     {
-        return view("index");
+        // Eloquent db query
+        // getting all data in posts
+        // $posts = Post::get();
+        
+        // $posts = Post::orderBy("id", "desc")->take(10)->get();
+        // $posts = Post::where("min_to_read", "=", "2")->get();
+
+        // sum and average
+        // $posts = Post::sum("min_to_read");
+        // $posts = Post::avg("min_to_read");
+
+        $posts = Post::orderBy("updated_at", "desc")->get();
+
+        dd($posts);
+        
+        return view("index", [
+            "posts" => $posts
+        ]);
     }
 
     public function indexTwo()
@@ -152,7 +170,10 @@ class PostsController extends Controller
      */
     public function show($id = 1)
     {
-        return $id;
+        $posts = Post::findOrFail($id);
+        dd($posts);
+        
+        // return $id;
     }
 
     /**

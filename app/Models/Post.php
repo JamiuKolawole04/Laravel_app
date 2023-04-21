@@ -10,5 +10,18 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $table = "posts";
+    // protected $table = "posts";
+    
+    // when using title as proimary key..The default key is the id in the migration file 
+    // protected $primaryKey = "title"; 
+
+    // disabling time stamps
+    // protected $timestamps = false;
+
+    // using different driver
+    // protected $connection = "sqlite";
+
+    // protected $attributes = [
+    //     "is_published" => true
+    // ];
 }
