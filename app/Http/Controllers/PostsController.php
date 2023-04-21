@@ -104,10 +104,11 @@ class PostsController extends Controller
           ]);
 
     }
+    
 
     public function default() 
     {
-        // Eloquent db query
+        // ELOQUENT QUERIES
         // getting all data in posts
         // $posts = Post::get();
         
@@ -125,6 +126,18 @@ class PostsController extends Controller
         return view("index", [
             "posts" => $posts
         ]);
+    }
+
+    public function defaultTwo() 
+    {
+        // ELOQUENT QUERIES
+
+        $posts = Post::orderBy("updated_at", "desc")->get();
+
+        return view("blog.indexTwo", [
+            "posts" => $posts
+        ]);
+        
     }
 
     public function indexTwo()
