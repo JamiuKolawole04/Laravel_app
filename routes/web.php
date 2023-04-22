@@ -53,6 +53,10 @@ Route::get("/blog2", [PostsController::class, "indexTwo"])->name("blog2");
 Route::get("/article/{id?}", [PostsController::class, "show"]);
 // adding regular expression only to route id and makng sure it's an integer
 Route::get("/blog/{id}", [PostsController::class, "show"])->where("id", "[0-9]+")->name("blogWithId");
+Route::get("/create", [PostsController::class, "create"]);
+Route::post("/store", [PostsController::class, "store"]);
+
+
 
 // checking number with whereNumber
 Route::get("/blog/number/{id}", [PostsController::class, "show"])->whereNumber("id");
@@ -106,7 +110,7 @@ Route::view( "/view ", "blog.index", ["name" => "code with dhary"]);
 
 
 
-// caaling theinvol with a route
+// caaling theinvolk with a route
 Route::get("/involke", HomeController::class);
 
 // fallback route
