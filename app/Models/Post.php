@@ -24,4 +24,8 @@ class Post extends Model
     // protected $attributes = [
     //     "is_published" => true
     // ];
+    
+    protected $fillable = [
+        "title", "excerpt", "body", "image_path", "min_to_read", "is_published"
+    ];
 }
