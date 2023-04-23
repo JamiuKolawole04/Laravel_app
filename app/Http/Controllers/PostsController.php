@@ -175,15 +175,25 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         //
-        $post = new Post();
-        $post->title = $request->title;
-        $post->excerpt = $request->excerpt;
-        $post->body = $request->body;
-        $post->min_to_read = $request->min_to_read;
-        $post->image_path = "temporary";
-        $post->is_published = $request->is_published === "on";
+        // Object oriented method or ways
+        // $post = new Post();
+        // $post->title = $request->title;
+        // $post->excerpt = $request->excerpt;
+        // $post->body = $request->body;
+        // $post->min_to_read = $request->min_to_read;
+        // $post->image_path = "temporary";
+        // $post->is_published = $request->is_published === "on";
 
-        $post->save();
+        // $post->save();
+
+        Post::create([
+          "title" => $request->title,
+          "excerpt" => $request->excerpt,
+          "body" => $request->body,
+          "min_to_read" =>  $request->min_to_read,
+          "image_path" => "temporary",
+          "is_published" => $request->is_published === "on"
+        ]);
 
         return redirect("/indexTwo");
 
