@@ -186,11 +186,11 @@ class PostsController extends Controller
 
         // $post->save();
 
-        Post::validate([
+        $request->validate([
             "title" => "required|unique:posts|max:255",
             "body" => "required",
             "excerpt" => "required",
-            "image_path" => ["required", "mimes:png,jpg, jpeg", "max:5048"],
+            "image" => ["required", "mimes:png,jpg, jpeg", "max:5048"],
             "min_to_read" => "min:0|max:60"
         ]);
 
