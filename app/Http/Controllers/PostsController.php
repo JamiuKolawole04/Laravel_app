@@ -233,6 +233,8 @@ class PostsController extends Controller
     public function edit($id)
     {
         //
+
+        return view("blog.edit");
     }
 
     /**

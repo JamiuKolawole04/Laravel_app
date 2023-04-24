@@ -64,6 +64,8 @@
                         </a>
                     on 13-07-2022
                 </span>
+
+                <a href={{ route("edit", ["id" => $post->id]) }} class="block italic text-green-500 border-b-1 border-green-400">Edit</a>
             </div>
         </div>
     </div>

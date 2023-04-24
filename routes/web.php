@@ -55,6 +55,8 @@ Route::get("/article/{id?}", [PostsController::class, "show"]);
 Route::get("/blog/{id}", [PostsController::class, "show"])->where("id", "[0-9]+")->name("blogWithId");
 Route::get("/create", [PostsController::class, "create"]);
 Route::post("/store", [PostsController::class, "store"]);
+Route::put("/edit/{id}", [PostsController::class, "edit"])->name("edit");
+Route::patch("/update/{id}", [PostsController::class, "update"]);
 
 
 
