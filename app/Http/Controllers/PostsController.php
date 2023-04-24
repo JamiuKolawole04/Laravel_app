@@ -234,7 +234,9 @@ class PostsController extends Controller
     {
         //
 
-        return view("blog.edit");
+        return view("blog.edit", [
+            "post" => Post::where("id", $id)->first(),
+        ]);
     }
 
     /**
@@ -247,6 +249,31 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        // dd("Test");
+        // Post::where("id", $id)->update([
+        //     "title" => $request->title,
+        //     "excerpt" => $request->excerpt,
+        //     "body" => $request->body,
+        //     "min_to_read" => $request->min_to_read,
+        //     "image_path" => $request->image,
+        //     "is_published" => $request->is_published === "on"
+        // ]);
+
+          // dd("Test");
+           $request->validate([
+            "title" => "required|unique:posts|max:255",
+            "body" => "required",
+            "excerpt" => "required",
+            "image" => ["mimes:png,jpg, jpeg", "max:5048"],
+            "min_to_read" => "min:0|max:60"
+        ]);
+        
+        Post::where("id", $id)->update($request->except([
+            "_token", "_method"
+        ]));
+
+        return redirect("/indexTwo");
     }
 
     /**
