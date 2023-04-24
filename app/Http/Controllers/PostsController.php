@@ -285,6 +285,10 @@ class PostsController extends Controller
     public function destroy($id)
     {
         //
+        // dd("test");
+        Post::destroy($id);
+
+        return redirect("indexTwo")->with("message", "a post has been deleted");
     }
 
     private function storeImage($request) 

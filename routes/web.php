@@ -57,6 +57,8 @@ Route::get("/create", [PostsController::class, "create"]);
 Route::post("/store", [PostsController::class, "store"]);
 Route::get("/edit/{id}", [PostsController::class, "edit"])->name("edit")->whereNumber("id");
 Route::patch("/update/{id}", [PostsController::class, "update"])->name("update");
+Route::delete("/delete/{id}", [PostsController::class, "destroy"])->name("delete");
+
 
 
 

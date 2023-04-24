@@ -66,6 +66,13 @@
                 </span>
 
                 <a href={{ route("edit", ["id" => $post->id]) }} class="block italic text-green-500 border-b-1 border-green-400">Edit</a>
+
+                <form action={{ route("delete", ["id" => $post->id]) }} method="POST">
+                 @csrf
+                 @method("DELETE")
+
+                 <button type="submit" class="pt-3 text-red-500 pr-3">Delete</button>
+                </form>
             </div>
         </div>
     </div>
