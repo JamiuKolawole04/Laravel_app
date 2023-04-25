@@ -265,7 +265,17 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+
+     /**
+      * updating with Request method directly
+      *
+      * @param Request $request
+      * @param [type] $id
+      * @return void
+     //   public function update(Request $request, $id)
+
+      */
+    public function update(PostFormRequest $request, $id)
     {
         //
 
@@ -280,13 +290,19 @@ class PostsController extends Controller
         // ]);
 
           // dd("Test");
-           $request->validate([
+          /**
+           * Validating with Request method dirreclty
+           * 
+            $request->validate([
             "title" => "required|max:255|unique:posts,title," .$id,
             "body" => "required",
             "excerpt" => "required",
             "image" => ["mimes:png,jpg, jpeg", "max:5048"],
             "min_to_read" => "min:0|max:60"
         ]);
+           */
+          
+        $request->validated();   
         
         Post::where("id", $id)->update($request->except([
             "_token", "_method"
