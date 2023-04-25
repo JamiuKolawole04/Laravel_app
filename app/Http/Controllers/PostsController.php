@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostFormRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -172,7 +173,16 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+     /**
+      * Validation with Reuest directly not FormRequest
+      *
+      * @param Request $request
+      * @return void
+       // public function  store(Request $request)
+
+      */
+    public function store(PostFormRequest $request)
     {
         //
         // Object oriented method or ways
@@ -186,14 +196,23 @@ class PostsController extends Controller
 
         // $post->save();
 
-        $request->validate([
+        // Validation with  Request direclty
+        /**
+         * Request validation method
+         * 
+         * 
+          $request->validate([
             "title" => "required|unique:posts|max:255",
             "body" => "required",
             "excerpt" => "required",
             "image" => ["required", "mimes:png,jpg, jpeg", "max:5048"],
             "min_to_read" => "min:0|max:60"
         ]);
+         */
+       
+         $request->validated();
 
+        //  Eloquent way
         Post::create([
           "title" => $request->title,
           "excerpt" => $request->excerpt,
