@@ -24,8 +24,12 @@ class PostFormRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $rules = [
+             "title" => "required|max:255|unique:posts,title," .$id,
+            "body" => "required",
+            "excerpt" => "required",
+            "image" => ["mimes:png,jpg, jpeg", "max:5048"],
+            "min_to_read" => "min:0|max:60"
         ];
     }
 }

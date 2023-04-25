@@ -262,7 +262,7 @@ class PostsController extends Controller
 
           // dd("Test");
            $request->validate([
-            "title" => "required|unique:posts|max:255",
+            "title" => "required|max:255|unique:posts,title," .$id,
             "body" => "required",
             "excerpt" => "required",
             "image" => ["mimes:png,jpg, jpeg", "max:5048"],
