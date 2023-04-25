@@ -133,7 +133,8 @@ class PostsController extends Controller
     {
         // ELOQUENT QUERIES
 
-        $posts = Post::orderBy("updated_at", "desc")->get();
+        // $posts = Post::orderBy("updated_at", "desc")->get();
+        $posts = Post::orderBy("updated_at", "desc")->paginate(20);
 
         return view("blog.indexTwo", [
             "posts" => $posts
