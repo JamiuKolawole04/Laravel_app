@@ -1,10 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FallbackController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
 use Barryvdh\Debugbar\Facades\Debugbar;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,15 +17,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/**
- * GET - Request a resource
- * POST - Create a resource
- * PUT - update a resource
- * PATCH - Modify a resource
- * DELETE - Delete a resource
- * OPTIONS - Ask the server which verb is allowed
- * 
- */
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
 
 Route::get('/', function () {
     Debugbar::addMessage("INFO!");
