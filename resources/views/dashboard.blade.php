@@ -12,6 +12,7 @@
                     You're logged in!
                 </div>
             </div>
+<<<<<<< HEAD
 
             <div>
                 <h1 class="text-xl font-bold pt-8 pb-2">
@@ -24,6 +25,8 @@
                     </h2>
                 @endforeach
             </div>
+=======
+>>>>>>> c8277a239c0e3424c8bc25736446335bd5b44a37
         </div>
     </div>
 </x-app-layout>
