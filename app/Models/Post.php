@@ -26,11 +26,18 @@ class Post extends Model
     // ];
     
     protected $fillable = [
-        "title", "excerpt", "body", "image_path", "min_to_read", "is_published"
+
+        "user_id","title", "excerpt", "body", "image_path", "min_to_read", "is_published"
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    // one to one relationship
+    public function meta()
+    {
+        return $this->hasOne(Meta::class);
     }
 }

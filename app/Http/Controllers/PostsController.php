@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostFormRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
@@ -214,7 +215,9 @@ class PostsController extends Controller
          $request->validated();
 
         //  Eloquent way
-        Post::create([
+         $post = Post::create([
+            
+          "user_id" => Auth::id(),
           "title" => $request->title,
           "excerpt" => $request->excerpt,
           "body" => $request->body,
@@ -223,6 +226,12 @@ class PostsController extends Controller
           "is_published" => $request->is_published === "on"
         ]);
 
+        $post->meta()->create([
+            "post_id" =>  $post->id,
+            "meta_description" => $request->meta_description,
+            "meta_keywords" => $request->meta_keywords,
+            "meta_robots" => $request->meta_robots,
+        ]);
         return redirect("/indexTwo");
 
     }
