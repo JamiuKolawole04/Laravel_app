@@ -30,6 +30,7 @@ class Post extends Model
         "user_id","title", "excerpt", "body", "image_path", "min_to_read", "is_published"
     ];
 
+    // many to one relationship that belongs to a user
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -39,5 +40,10 @@ class Post extends Model
     public function meta()
     {
         return $this->hasOne(Meta::class);
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
     }
 }
